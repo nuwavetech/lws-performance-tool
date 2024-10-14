@@ -1,0 +1,132 @@
+{
+  "name": "com.nuwavetech.sample.lws-performance-tool",
+  "description": "API for the LightWave Server Performance Tool",
+  "id": "033a0a2e4eea751d808001010000012ef1",
+  "modificationTime": 1729008693,
+  "isBrief": false,
+  "isNative": false,
+  "operations": [
+    {
+      "path": "/lws-performance-tool/complex",
+      "methods": [
+        {
+          "api": {
+            "type": "serverclass",
+            "stringPadding": "zeros",
+            "transactionTimeout": 0,
+            "processName": {
+              "type": "constant",
+              "value": "=LWSPT-PATHMON"
+            },
+            "serverclass": {
+              "type": "constant",
+              "value": "PTSERV"
+            }
+          },
+          "request": {
+            "mappings": [
+              {
+                "target": "*",
+                "source": {
+                  "type": "body",
+                  "value": "*"
+                }
+              }
+            ],
+            "messageType": {
+              "dictionary": "0749934094ea751d808001010000012ef1",
+              "definition": "ComplexMsg"
+            }
+          },
+          "responses": [
+            {
+              "mappings": [
+                {
+                  "target": {
+                    "value": "*",
+                    "type": "body"
+                  },
+                  "source": "*"
+                }
+              ],
+              "replyCode": "*",
+              "messageType": {
+                "dictionary": "0749934094ea751d808001010000012ef1",
+                "definition": "ComplexMsg"
+              },
+              "httpStatus": 200
+            }
+          ],
+          "cacheControl": {
+            "enabled": false,
+            "maxAge": 60
+          },
+          "verb": "POST",
+          "description": "Echos a complex payload.",
+          "alias": "ComplexMsg"
+        }
+      ]
+    },
+    {
+      "path": "/lws-performance-tool/simple",
+      "methods": [
+        {
+          "api": {
+            "type": "serverclass",
+            "stringPadding": "zeros",
+            "transactionTimeout": 0,
+            "processName": {
+              "type": "constant",
+              "value": "=LWSPT-PATHMON"
+            },
+            "serverclass": {
+              "type": "constant",
+              "value": "PTSERV"
+            }
+          },
+          "request": {
+            "mappings": [
+              {
+                "target": "*",
+                "source": {
+                  "type": "body",
+                  "value": "*"
+                }
+              }
+            ],
+            "messageType": {
+              "dictionary": "0749934094ea751d808001010000012ef1",
+              "definition": "SimpleMsg"
+            }
+          },
+          "responses": [
+            {
+              "mappings": [
+                {
+                  "target": {
+                    "value": "*",
+                    "type": "body"
+                  },
+                  "source": "*"
+                }
+              ],
+              "replyCode": "*",
+              "messageType": {
+                "dictionary": "0749934094ea751d808001010000012ef1",
+                "definition": "SimpleMsg"
+              },
+              "httpStatus": 200
+            }
+          ],
+          "cacheControl": {
+            "enabled": false,
+            "maxAge": 60
+          },
+          "verb": "POST",
+          "description": "Echos a simple payload.",
+          "alias": "SimpleMsg"
+        }
+      ]
+    }
+  ]
+}

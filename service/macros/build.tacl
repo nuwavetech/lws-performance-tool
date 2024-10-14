@@ -1,0 +1,47 @@
+?tacl routine
+#frame
+
+== Creates the DDL dictionary and C header files.
+
+#output
+#output Building the DDL Dictionary ...
+
+#set #inlineprefix +
+
+sink [#purge ddlout]
+
+ddl2 / inline, out ddlout /
+
++ ?dict !
++ ?c pth !
++ ?source ptddl
++ ?noc
+
+#inlineeof
+
+[#if [ :_completion:completioncode ] > 1 |then|
+  #output Dictionary build completed with warnings or errors.
+  #return
+]
+
+== Build the program file.
+
+#output Building the PTSERV program ...
+
+sink [#purge ptservl]
+sink [#purge ptserv]
+
+ccomp / in ptservc, out ptservl / ptserv ; &
+  runnable, symbols, inspect, extensions, allow_cplusplus_comments, &
+  ssv0 "[#defaults/current/]", ssv1 "$system.system", &
+  ssv2 "$system.zsysdefs"
+
+[#if [ :_completion:completioncode ] <> 0 |then|
+  #output Compilation of PTSERV completed with warnings or errors.
+  #return
+]
+
+#output Build completed successfully.
+#output
+
+#unframe

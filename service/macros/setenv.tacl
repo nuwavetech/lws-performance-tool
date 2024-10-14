@@ -1,0 +1,11 @@
+?tacl macro
+
+== Customize this for your environment.
+
+#set #param hometerm                    $zhome
+#set #param pathmon-name                $lwspt
+#set #param lws-isv                     [#defaults/current/]
+
+delete define =lwspt?pathmon
+add define =lwspt-pathmon, class map, file [#param pathmon-name]
+

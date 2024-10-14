@@ -1,0 +1,21 @@
+! Copyright (c) 2024 NuWave Technologies, Inc. All rights reserved.
+
+DEF SIMPLE-MSG.
+  05 MSG-CODE             TYPE BINARY 16.
+  05 PAYLOAD              PIC X(2097150).
+END.
+
+DEF COMPLEX-TYPE.
+  05 INT-FIELD            TYPE BINARY 32.
+  05 DOUBLE-FIELD         TYPE FLOAT 64.
+  05 UNUMERIC-FIELD       PIC 9(12)V9(4).
+  05 NUMERIC-FIELD        PIC S9(11)V9(4).
+  05 CHAR-FIELD           PIC X(20).
+END.
+
+DEF COMPLEX-MSG.
+  05 MSG-CODE             TYPE BINARY 16.
+  05 ITEM-COUNT           TYPE BINARY 16.
+  05 COMPLEX-ITEMS        TYPE COMPLEX-TYPE OCCURS 0 to 1000 TIMES
+                          DEPENDING ON ITEM-COUNT.
+END.
