@@ -1,0 +1,7 @@
+?tacl macro
+
+#set #param hometerm
+#set #param pathmon-name
+#set #param lws-isv
+
+delete define =lwspt?pathmon

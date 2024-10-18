@@ -1,0 +1,50 @@
+?tacl routine
+#frame
+
+== Installs the Lightwave Service definitions.
+[#push
+isv
+svcname
+svcdesc
+]
+
+#set isv [#param lws-isv]
+#set svcname com.nuwavetech.sample.lws-performance-tool
+#set svcdesc "LightWave Server Performance Tool Service"
+
+
+#output
+#output Installing the LightWave Server Performance Tool service in filesystem [isv].
+#output
+
+run [isv].lwscom ; filesystem [isv] ; import dictionary * !, file lwsptdic
+[#if [ :_completion:completioncode ] <> 0 |then|
+  #output Dicionary installation failed.
+  #return
+]
+
+run [isv].lwscom ; filesystem [isv] ; import api * !, file lwsptapi
+[#if [ :_completion:completioncode ] <> 0 |then|
+  #output API installation failed.
+  #return
+]
+
+run [isv].lwscom ; filesystem [isv] ; allow 1 error ; delete service [svcname]
+run [isv].lwscom ; filesystem [isv] ; add service [svcname], &
+name [svcname], &
+description [svcdesc], &
+api com.nuwavetech.sample.lws-performance-tool, &
+acp allow-anonymous-access, &
+enabled
+[#if [ :_completion:completioncode ] <> 0 |then|
+  #output Service could not be added.
+  #return
+]
+
+#output Completed.
+#output
+run [isv].lwscom ; filesystem [isv] ; info service [svcname], detail
+#output
+#output
+
+#unframe

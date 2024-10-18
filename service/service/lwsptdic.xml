@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<dictionary xmlns="http://schemas.nuwavetech.com/schemas/lightwave/dictionary-1.0.xsd" id="0749934094ea751d808001010000012ef1" name="com.nuwavetech.sample.lws-performance-tool" ddlOrigin="MXwgIHwxNzI4OTk2MTQ4fFxDR05BQzIuJERBVDE2QS5MV1NQVA==">
+  <types>
+    <type name="ComplexMsg" size="64004" ddlType="1" ddlName="COMPLEX-MSG" ddlModified="2024-10-15T06:42" ddlOrigin="MXxJRHxDT01QTEVYLU1TR3xcQ0dOQUMyLiREQVQxNkEuTFdTUFQ=">
+      <element name="msgCode" type="short" offset="0" size="2"/>
+      <element name="itemCount" type="short" offset="2" size="2"/>
+      <element name="complexItems" type="ComplexType" minOccurs="0" maxOccurs="1000" offset="4" size="64" dependsOn="itemCount"/>
+    </type>
+    <type name="ComplexType" size="64" ddlType="1" ddlName="COMPLEX-TYPE" ddlModified="2024-10-15T06:42" ddlOrigin="MXxJRHxDT01QTEVYLVRZUEV8XENHTkFDMi4kREFUMTZBLkxXU1BU">
+      <element name="intField" type="int" offset="0" size="4"/>
+      <element name="doubleField" type="double" offset="4" size="8"/>
+      <element name="unumericField" type="unsignedNumeric" offset="12" size="16" scale="4"/>
+      <element name="numericField" type="numeric" offset="28" size="16" scale="4"/>
+      <element name="charField" type="string" offset="44" size="20"/>
+    </type>
+    <type name="SimpleMsg" size="2097152" ddlType="1" ddlName="SIMPLE-MSG" ddlModified="2024-10-15T06:42" ddlOrigin="MXxJRHxTSU1QTEUtTVNHfFxDR05BQzIuJERBVDE2QS5MV1NQVA==">
+      <element name="msgCode" type="short" offset="0" size="2"/>
+      <element name="payload" type="string" offset="2" size="2097150"/>
+    </type>
+  </types>
+</dictionary>
